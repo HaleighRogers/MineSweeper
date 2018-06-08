@@ -1,0 +1,17 @@
+.App-header {
+  background-color: #32689B;
+  height: 120px;
+  padding: 20px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Header-name {
+  color: #F0F2F7;
+  font-style: normal;
+  font-weight: 70;
+  font-size: 4.3em;
+}
