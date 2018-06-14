@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import '../styles/board.css';
 import Square from './Square';
 
-const rows = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-
 export default class Board extends Component {
-  renderRow(row) {
-    let gameRow = columns.map((column, index)=> {
-        return <Square key={'square'+index.toString()}
-          id={(row+column).toString()}/>
-      })
-    return <div className="Row" key={row}>{gameRow}</div>
+
+  renderRow(rowCount) {
+    let gameRow = []
+    let count = 0
+    while ((this.props.columnCount - count) !== 0){
+      gameRow.push(<Square key={'square' + count} id={this.props.squares[count].id}/>)
+      count++
+    }
+    return <div className="Row" key={'row' + rowCount}>{gameRow}</div>
   }
 
   renderBoard() {
-    return(
-      rows.map((row, index)=> {
-        return this.renderRow(row)
-      })
-    )
+    let count = 0
+    let row = []
+    while (count < this.props.rowCount){
+      row.push(this.renderRow(count))
+      count++
+    }
+    return row
   }
 
   render() {

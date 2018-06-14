@@ -3,5 +3,7 @@
 }
 
 .Board{
+  display: inline-block;
+  width: 70%;
   margin-top: 10em;
 }
