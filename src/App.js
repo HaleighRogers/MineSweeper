@@ -4,6 +4,7 @@ import jsonSquares from './json/squares.json';
 import Header from './components/Header';
 import Board from './components/Board';
 import Settings from './components/Settings';
+import BoardHeader from './components/BoardHeader';
 
 class App extends Component {
   constructor(){
@@ -20,6 +21,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Settings scores={this.state.scores}/>
+        <BoardHeader/>
         <Board squares={this.state.squares}
               columnCount={this.state.columnCount}
               rowCount={this.state.rowCount}/>

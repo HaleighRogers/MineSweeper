@@ -4,6 +4,7 @@
 
 .Board{
   display: inline-block;
-  width: 70%;
-  margin-top: 10em;
+  width: 85%;
+  float: right;
+  margin: -4.5px auto 0;
 }
