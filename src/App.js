@@ -9,19 +9,38 @@ import BoardHeader from './components/BoardHeader';
 class App extends Component {
   constructor(){
     super()
-    this.state={
+    this.state = {
       scores: [{name: 'Haleigh', time: '0:50'}],
       squares: jsonSquares,
       columnCount: 10,
-      rowCount: 10
+      rowCount: 10,
+      bombCount: 10
     }
   }
+
+  handleSetBombs = () => {
+    let squares = [...this.state.squares]
+    squares.forEach((square) => square.isBomb = false)
+    let bombSquares = 0
+
+    while(bombSquares < this.state.bombCount){
+      let index = Math.floor((Math.random() * squares.length - 1) + 1)
+      let square = squares[index]
+      if(!square.isBomb) {
+        square.isBomb = true
+        bombSquares++
+      }
+    }
+
+    this.setState({squares: squares})
+  }
+
   render() {
     return (
       <div className="App">
         <Header/>
         <Settings scores={this.state.scores}/>
-        <BoardHeader/>
+        <BoardHeader handleSetBombs={this.handleSetBombs}/>
         <Board squares={this.state.squares}
               columnCount={this.state.columnCount}
               rowCount={this.state.rowCount}/>
