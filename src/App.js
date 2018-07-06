@@ -36,23 +36,40 @@ class App extends Component {
 
   handleNumberOfBombsASqaureTouches = () => {
     let squares = [...this.state.squares]
-    let index = 0
-    let square = squares[index]
 
-    while(index < squares.length - 1) {
-      if(square.isBomb = false) {
-        this.surroundingSquareHelper(square.id)
+    squares.forEach((square) => {
+      if(square.isBomb === false) {
+        square.surroundingBombs = this.surroundingSquareHelper(square.id)
       }
-      index++
-    }
+    })
+    this.setState({squares: squares})
   }
 
   surroundingSquareHelper = (squareId) => {
+    let squares = [...this.state.squares]
     let bombTouchCount = 0
-    //look at the surrounding squares
-    //if a surrounding square is a bomb increase
-    //the bombTouchCount
+    //let squareKeyArr = squareId.split(separator)
+    let surroundingSquares = squares.filter((square) => {
+      this.oneLeft(squareId) === square.id ||
+      this.oneRight(squareId) === square.id ||
+
+      //(square.id[0] === squareId[0] && (parseInt(square.id[1], 10)
+      //=== parseInt(squareId[1], 10) + 1)) || (parseInt(squareId[1], 10) - 1)
+    })
+    surroundingSquares.forEach((square) => {
+      if (square.isBomb) {
+        bombTouchCount++
+      }
+    })
     return bombTouchCount
+  }
+
+  oneLeft = (squareId) => {
+    return squareId[0] + String.fromCharCode(squareId[1].charCodeAt(0) - 1)
+  }
+
+  oneRight = (squareId) => {
+    return squareId[0] + String.fromCharCode(squareId[1].charCodeAt(0) + 1)
   }
 
   render() {
