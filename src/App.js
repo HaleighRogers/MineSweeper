@@ -31,8 +31,28 @@ class App extends Component {
         bombSquares++
       }
     }
-
     this.setState({squares: squares})
+  }
+
+  handleNumberOfBombsASqaureTouches = () => {
+    let squares = [...this.state.squares]
+    let index = 0
+    let square = squares[index]
+
+    while(index < squares.length - 1) {
+      if(square.isBomb = false) {
+        this.surroundingSquareHelper(square.id)
+      }
+      index++
+    }
+  }
+
+  surroundingSquareHelper = (squareId) => {
+    let bombTouchCount = 0
+    //look at the surrounding squares
+    //if a surrounding square is a bomb increase
+    //the bombTouchCount
+    return bombTouchCount
   }
 
   render() {
