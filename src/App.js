@@ -52,7 +52,12 @@ class App extends Component {
     let surroundingSquares = squares.filter((square) => {
       this.oneLeft(squareId) === square.id ||
       this.oneRight(squareId) === square.id ||
-
+      this.oneTopLeft(squareId) === square.id ||
+      this.oneTopMiddle(squareId) === square.id ||
+      this.oneTopRight(squareId) === square.id ||
+      this.oneBottomLeft(squareId) === square.id ||
+      this.oneBottomMiddle(squareId) === square.id ||
+      this.oneBottomRight(squareId) === square.id
       //(square.id[0] === squareId[0] && (parseInt(square.id[1], 10)
       //=== parseInt(squareId[1], 10) + 1)) || (parseInt(squareId[1], 10) - 1)
     })
@@ -70,6 +75,30 @@ class App extends Component {
 
   oneRight = (squareId) => {
     return squareId[0] + String.fromCharCode(squareId[1].charCodeAt(0) + 1)
+  }
+
+  oneTopLeft = (squareId) => {
+    return (parseInt(squareId[0], 10) - 1) + String.fromCharCode(squareId[1].charCodeAt(0) - 1)
+  }
+
+  oneTopMiddle = (squareId) => {
+    return (parseInt(squareId[0], 10) - 1) + squareId[1]
+  }
+
+  oneTopRight = (squareId) => {
+    return (parseInt(squareId[0], 10) - 1) + String.fromCharCode(squareId[1].charCodeAt(0) + 1)
+  }
+
+  oneBottomLeft = (squareId) => {
+    return (parseInt(squareId[0], 10) + 1) + String.fromCharCode(squareId[1].charCodeAt(0) - 1)
+  }
+
+  oneBottomMiddle = (squareId) => {
+    return (parseInt(squareId[0], 10) + 1) + squareId[1]
+  }
+
+  oneBottomRight = (squareId) => {
+    return (parseInt(squareId[0], 10) + 1) + String.fromCharCode(squareId[1].charCodeAt(0) + 1)
   }
 
   render() {
