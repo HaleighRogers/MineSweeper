@@ -7,8 +7,6 @@ export default class BoardHeader extends Component {
     return(
       <div className="BoardHeader">
         <div className="StartNewGameButton" onClick={this.props.handleSetBombs}>
-        <div className="SetNumberOfBombsASquareTouched" onClick={this.props.handleNumberOfBombsASqaureTouches}>
-        </div>
           New Game
         </div>
       </div>

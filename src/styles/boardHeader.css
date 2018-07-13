@@ -1,5 +1,7 @@
 .BoardHeader{
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
   margin-top: 3em;
   background-color: #5c5d60;
   border: .75px solid black;
@@ -9,5 +11,4 @@
 
 .StartNewGameButton{
   border: 1px solid black;
-
 }

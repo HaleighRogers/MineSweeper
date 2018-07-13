@@ -1,10 +1,11 @@
-.Row{
-  display: inline-block;
+.Board{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
-.Board{
-  display: inline-block;
-  width: 85%;
-  float: right;
-  margin: -4.5px auto 0;
+.row-container {
+  display: flex;
+  width: 28rem;
+  flex-wrap: wrap;
 }

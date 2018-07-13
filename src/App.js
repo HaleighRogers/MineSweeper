@@ -20,7 +20,10 @@ class App extends Component {
 
   handleSetBombs = () => {
     let squares = [...this.state.squares]
-    squares.forEach((square) => square.isBomb = false)
+    squares.forEach((square) => {
+      square.isBomb = false
+      square.surroundingBombs = 0
+    })
     let bombSquares = 0
 
     while(bombSquares < this.state.bombCount){
@@ -32,13 +35,15 @@ class App extends Component {
       }
     }
     this.setState({squares: squares})
+    this.handleNumberOfBombsASqaureTouches()
   }
 
   handleNumberOfBombsASqaureTouches = () => {
     let squares = [...this.state.squares]
 
-    squares.forEach((square) => {
+    squares.map((square) => {
       if(square.isBomb === false) {
+        console.log(square.id)
         square.surroundingBombs = this.surroundingSquareHelper(square.id)
       }
     })
@@ -48,8 +53,8 @@ class App extends Component {
   surroundingSquareHelper = (squareId) => {
     let squares = [...this.state.squares]
     let bombTouchCount = 0
-    //let squareKeyArr = squareId.split(separator)
     let surroundingSquares = squares.filter((square) => {
+      return ( 
       this.oneLeft(squareId) === square.id ||
       this.oneRight(squareId) === square.id ||
       this.oneTopLeft(squareId) === square.id ||
@@ -58,10 +63,13 @@ class App extends Component {
       this.oneBottomLeft(squareId) === square.id ||
       this.oneBottomMiddle(squareId) === square.id ||
       this.oneBottomRight(squareId) === square.id
+      )
     })
+
     surroundingSquares.forEach((square) => {
       if (square.isBomb) {
         bombTouchCount++
+        console.log("okokokok" + bombTouchCount)
       }
     })
     return bombTouchCount
@@ -104,11 +112,12 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Settings scores={this.state.scores}/>
-        <BoardHeader handleSetBombs={this.handleSetBombs}
-        handleNumberOfBombsASqaureTouches={this.handleNumberOfBombsASqaureTouches}/>
-        <Board squares={this.state.squares}
-              columnCount={this.state.columnCount}
-              rowCount={this.state.rowCount}/>
+        <Board 
+          squares={this.state.squares}
+          columnCount={this.state.columnCount}
+          rowCount={this.state.rowCount}
+          handleSetBombs={this.handleSetBombs}
+        />
       </div>
     );
   }
