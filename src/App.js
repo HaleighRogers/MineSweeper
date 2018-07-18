@@ -12,9 +12,10 @@ class App extends Component {
     this.state = {
       scores: [{name: 'Haleigh', time: '0:50'}],
       squares: jsonSquares,
-      columnCount: 10,
-      rowCount: 10,
-      bombCount: 10
+      columnCount: 30,
+      rowCount: 20,
+      bombCount: 10,
+      showBombs: false
     }
   }
 
@@ -54,7 +55,7 @@ class App extends Component {
     let squares = [...this.state.squares]
     let bombTouchCount = 0
     let surroundingSquares = squares.filter((square) => {
-      return ( 
+      return (
       this.oneLeft(squareId) === square.id ||
       this.oneRight(squareId) === square.id ||
       this.oneTopLeft(squareId) === square.id ||
@@ -107,12 +108,18 @@ class App extends Component {
     return (parseInt(squareId[0], 10) + 1) + String.fromCharCode(squareId[1].charCodeAt(0) + 1)
   }
 
+  handleShowBombs = () => {
+    this.setState({showBombs: true})
+  }
+
   render() {
     return (
       <div className="App">
         <Header/>
         <Settings scores={this.state.scores}/>
-        <Board 
+        <Board
+          handleShowBombs={this.handleShowBombs}
+          showBombs={this.state.showBombs}
           squares={this.state.squares}
           columnCount={this.state.columnCount}
           rowCount={this.state.rowCount}

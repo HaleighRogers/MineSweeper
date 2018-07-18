@@ -12,17 +12,18 @@ export default class Square extends Component {
 
   checkForBomb = () => {
     if(this.props.isBomb){
+      this.props.handleShowBombs()
       console.log("💣💣💣💣💣💣💣💣💣💣💣💣💣💣")
     }
   }
 
   render() {
     return(
-      <div 
-        className="Square" 
+      <div
+        className="Square"
         onClick={this.handleSquareClick}
       >
-        {this.props.isBomb ? "💣" : "🤠"}
+        {this.props.isBomb && this.props.showBombs ? "💣" : "🤠"}
       </div>
     )
   }

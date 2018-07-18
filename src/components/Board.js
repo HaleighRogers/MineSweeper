@@ -4,7 +4,7 @@ import Square from './Square';
 import BoardHeader from './BoardHeader';
 
 export default class Board extends Component {
-  
+
   render() {
     return(
       <div className="Board">
@@ -12,11 +12,13 @@ export default class Board extends Component {
         <BoardHeader handleSetBombs={this.props.handleSetBombs}/>
         {this.props.squares.map(square => {
           return (
-            <Square 
-              key={square.id} 
+            <Square
+              key={square.id}
               id={square.id}
               clicked={square.clicked}
               isBomb={square.isBomb}
+              showBombs={this.props.showBombs}
+              handleShowBombs={this.props.handleShowBombs}
               surroundingBombs={square.surroundingBombs}
             />
           )
