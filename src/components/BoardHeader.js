@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/boardHeader.css';
 
-export default class BoardHeader extends Component {
-
-  render() {
-    return(
-      <div className="BoardHeader">
-        <div className="StartNewGameButton" onClick={this.props.handleSetBombs}>
-          New Game
-        </div>
+const BoardHeader = ({showBombs, startNewGame, handleSetBombs}) => {
+  return (
+    <div className="BoardHeader">
+      <div 
+        className="StartNewGameButton" 
+        onClick={showBombs ? () => startNewGame() : () => handleSetBombs()}
+      >
+        {showBombs ? '🤡' : 'New Game'}
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+export default BoardHeader;

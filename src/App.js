@@ -15,7 +15,7 @@ class App extends Component {
       columnCount: 30,
       rowCount: 20,
       bombCount: 10,
-      showBombs: false
+      showBombs: false,
     }
   }
 
@@ -37,14 +37,13 @@ class App extends Component {
     }
     this.setState({squares: squares})
     this.handleNumberOfBombsASqaureTouches()
-  }
+}
 
   handleNumberOfBombsASqaureTouches = () => {
     let squares = [...this.state.squares]
 
     squares.map((square) => {
       if(square.isBomb === false) {
-        console.log(square.id)
         square.surroundingBombs = this.surroundingSquareHelper(square.id)
       }
     })
@@ -70,7 +69,6 @@ class App extends Component {
     surroundingSquares.forEach((square) => {
       if (square.isBomb) {
         bombTouchCount++
-        console.log("okokokok" + bombTouchCount)
       }
     })
     return bombTouchCount
@@ -112,6 +110,11 @@ class App extends Component {
     this.setState({showBombs: true})
   }
 
+  startNewGame = () => {
+    this.setState({showBombs: false})
+    this.handleSetBombs()
+  }
+
   render() {
     return (
       <div className="App">
@@ -124,6 +127,7 @@ class App extends Component {
           columnCount={this.state.columnCount}
           rowCount={this.state.rowCount}
           handleSetBombs={this.handleSetBombs}
+          startNewGame={this.startNewGame}
         />
       </div>
     );
