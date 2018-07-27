@@ -3,6 +3,9 @@
     border: 1px solid black;
     height: 2.5em;
     width: 2.5em;
+    color: blue;
+    text-align: center;
+    line-height: 2.5em;
 }
 
 .Square:hover {
