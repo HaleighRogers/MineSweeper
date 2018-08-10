@@ -25,6 +25,8 @@ export default class Square extends Component {
     }
   }
 
+  // BUG: shows all squares with surrounding bombs and we just want to
+  // keep the ones displayed that have been clicked whenever a bomb is clicked
   render() {
     if(this.state.clickedSquare && this.props.surroundingBombs > 0) {
       return (
@@ -38,8 +40,11 @@ export default class Square extends Component {
           className="Square"
           onClick={this.props.isBomb ? () => this.handleSquareClick() : () => this.setState({clickedSquare: true})}
         >
-          {this.props.isBomb && this.props.showBombs ? '💣' : ''}
+          {this.props.isBomb && this.props.showBombs ? '💣': ''}
+          {this.props.surroundingBombs && this.props.showBombs
+            ? this.props.surroundingBombs: ''}
         </div>
+
       )
     }
   }

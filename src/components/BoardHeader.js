@@ -4,14 +4,13 @@ import '../styles/boardHeader.css';
 const BoardHeader = ({showBombs, startNewGame, handleSetBombs}) => {
   return (
     <div className="BoardHeader">
-      <div 
-        className="StartNewGameButton" 
+      <div
+        className="StartNewGameButton"
         onClick={showBombs ? () => startNewGame() : () => handleSetBombs()}
       >
-        {showBombs ? '🤡' : 'New Game'}
+        {showBombs ? '😵' : '😊'}
       </div>
     </div>
   )
 }
-
 export default BoardHeader;
