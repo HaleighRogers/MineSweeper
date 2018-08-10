@@ -19,6 +19,16 @@ class App extends Component {
     }
   }
 
+  componentWillMount() {
+    this.startNewGame()
+  }
+
+  componentWillUpdate(){
+    if(this.state.clicked && this.startNewGame()) {
+      this.setState({clicked: false})
+    }
+  }
+
   handleSetBombs = () => {
     let squares = [...this.state.squares]
     squares.forEach((square) => {

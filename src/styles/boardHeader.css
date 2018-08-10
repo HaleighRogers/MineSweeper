@@ -1,14 +1,21 @@
 .BoardHeader{
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   margin-top: 3em;
   background-color: #5c5d60;
-  border: .75px solid black;
+  border: 0.75px solid black;
   height: 3em;
   width: 26.15em;
 }
 
 .StartNewGameButton{
+  margin: 0 auto;
+  align-items: center;
+  display: inline-flex;
+  padding-left: 1.8em;
+  background-color: #9fa1a5;
   border: 1px solid black;
+  height: 3em;
+  width: 3em;
 }

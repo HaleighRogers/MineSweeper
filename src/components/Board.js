@@ -4,6 +4,7 @@ import Square from './Square';
 import BoardHeader from './BoardHeader';
 
 const Board = ({squares, handleSetBombs, handleShowBombs, showBombs, startNewGame}) => {
+
   return (
     <div className="Board">
       <div className='row-container'>
