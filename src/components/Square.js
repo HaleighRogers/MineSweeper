@@ -28,7 +28,7 @@ export default class Square extends Component {
   render() {
     if(this.state.clicked && this.props.surroundingBombs > 0) {
       return (
-        <div className="Square">
+        <div className="ClickedSquare">
           {this.props.surroundingBombs}
         </div>
     )}
