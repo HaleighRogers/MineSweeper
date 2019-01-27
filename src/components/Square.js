@@ -31,8 +31,10 @@ export default class Square extends Component {
         <div className="ClickedSquare">
           {this.props.surroundingBombs}
         </div>
-    )}
-    else {
+    )} else if (this.state.clicked && this.props.surroundingBombs === 0) {
+      return (
+        <div className="ClickedSquare"/>
+    )} else {
       return (
         <div
           className="Square"
